@@ -65,4 +65,8 @@ public class Person implements Serializable {
 		this.age = age;
 	}
 
+	public boolean isValid() {
+		return (name != null && !name.isBlank()) && (email != null && !email.isBlank()) && birthDate != null;
+	}
+
 }

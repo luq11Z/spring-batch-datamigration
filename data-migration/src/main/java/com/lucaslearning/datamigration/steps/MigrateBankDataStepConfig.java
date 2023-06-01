@@ -26,7 +26,7 @@ public class MigrateBankDataStepConfig {
 	public Step migrateBankDataStep(JobRepository jobRepository, PlatformTransactionManager transactionManager,
 			ItemReader<BankData> bankDataFileReader, ItemWriter<BankData> bankWriter) {
 		return new StepBuilder("migrateBankDataStep", jobRepository)
-				.<BankData, BankData>chunk(1, transactionManager)
+				.<BankData, BankData>chunk(10000, transactionManager)
 				.reader(bankDataFileReader)
 				.writer(bankWriter)
 				.build();
